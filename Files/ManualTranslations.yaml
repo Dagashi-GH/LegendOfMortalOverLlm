@@ -1990,3 +1990,19 @@
   badtrans: true
   direct: came
   literal: Lai le
+- raw: 師兄！
+  result: "Senior Brother!"
+  badtrans: true
+  direct: senior brother
+  literal: Shixiong
+- raw: 別拍了，乖，去旁邊吃草。
+  result: "Stop patting, be good, go over there and eat some grass."
+  badtrans: true
+  direct: don’t pat already obediently go beside eat grass
+  literal: Bie pai le, guai, qu pangbian chi cao
+- raw: 別拍了，跟我過來。 妳碰了髒東西，手要用酒水洗過。
+  result: "Stop patting and come with me. You touched something dirty, so wash your hands with alcohol."
+  badtrans: true
+  direct: don’t pat already follow me come you touched dirty thing hands must use alcohol water wash
+  literal: Bie pai le, gen wo guo lai. Ni peng le zang dong xi, shou yao yong jiu shui xi guo
+
