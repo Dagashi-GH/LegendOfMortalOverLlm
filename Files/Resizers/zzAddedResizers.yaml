@@ -1,0 +1,272 @@
+
+# Front Menu
+- path: UI/Layer_1/Buttons/*/Text
+  sampleText: Retreat to the wilderness
+  idealFontSize: 24.0
+  allowWordWrap: true
+  adjustWidth: 200
+  adjustX: -100
+
+# Front Save
+- path: UI/Layer_2/LoadGamePanel/Container/*/Slot/Header*
+  sampleText: Legendary 001
+  idealFontSize: 16
+  allowWordWrap: true
+- path: UI/Layer_2/LoadGamePanel/Container/*/Slot/*/Title
+  sampleText: Year Four, FebruaryLate month
+  idealFontSize: 20.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  alignment: topLeft
+- path: UI/Layer_2/LoadGamePanel/Container/*/Slot/*/Time
+  sampleText: 2026/02/08 16:00:08
+  idealFontSize: 16.0
+  allowWordWrap: true
+  allowAutoSizing: false
+
+
+# Main Save
+- path: '[UI]/TopPanel/SaveGamePanel/Container/Scroll View/Viewport/Slots/SaveGameSlot(Clone)/*/Header'
+  sampleText: Legendary 001
+  idealFontSize: 16.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/SaveGamePanel/Container/Scroll View/Viewport/Slots/SaveGameSlot(Clone)/Slot/*/Title'
+  sampleText: Year Four, FebruaryLate month
+  idealFontSize: 20.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  alignment: topLeft
+- path: '[UI]/TopPanel/SaveGamePanel/Container/Scroll View/Viewport/Slots/SaveGameSlot(Clone)/Slot/*/Time'
+  sampleText: 2026/02/08 16:00:08
+  idealFontSize: 16.0
+  allowWordWrap: true
+  allowAutoSizing: false
+
+# Main UI
+- path: '[UI]/MainUI/Layer_1/ActionInfo/ContributionValue'
+  sampleText: "190"
+  idealFontSize: 20.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustY: -10
+- path: '[UI]/MainUI/Layer_1/ActionInfo/ContributionText'
+  sampleText: Contribution
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustX: -10
+  adjustY: -10
+- path: '[UI]/MainUI/Layer_1/ActionInfo/MentalBar/Header'
+  sampleText: Mind Affinity
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustWidth: 25
+- path: '[UI]/MainUI/Layer_1/ActionInfo/Action/ActionText'
+  sampleText: Action
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustY: -4
+  adjustX: -14
+  alignment: topLeft
+
+- path: MainMap/*/Tooltip_*/*/Title
+  sampleText: Male Disciple's Quarters
+  idealFontSize: 20.0
+  allowWordWrap: true  
+  adjustWidth: -40
+  adjustX: 0
+  adjustY: 10
+- path: MainMap/*/Tooltip_*/*/Desc
+  sampleText: Spends action on 1
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustWidth: -40
+  adjustY: -4
+
+# Attributes
+- path: '[UI]/TopPanel/StatusPanel/Container/Buttons/LeftButtons/StatusButton_*/*/Text (TMP)'
+  sampleText: Sect
+  idealFontSize: 20
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustWidth: 120
+  alignment: center
+  adjustX: -20
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Home/Level/Text (TMP)'
+  sampleText: Three
+  allowAutoSizing: false
+  adjustWidth: 100
+  allowWordWrap: false
+  adjustX: -10
+
+# Sect
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Home/Asset/Text'
+  sampleText: Ledger
+  idealFontSize: 20.0
+  allowWordWrap: false
+  adjustX: -40
+  adjustY: -20
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Home/Asset/Text (1)'
+  sampleText: Taels
+  idealFontSize: 20.0
+  allowWordWrap: false
+  adjustY: -4
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Home/AssetList/AssetItem_*/Name'
+  sampleText: Outer Fortress
+  idealFontSize: 16.0
+  allowWordWrap: true
+
+# Stats
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/HoverPanel/*/Text (1)'
+  sampleText: 'Affinity:'
+  idealFontSize: 16.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/HoverPanel/*/Value'
+  sampleText: Happiness
+  idealFontSize: 16.0
+  allowWordWrap: true
+  adjustX: -20
+  adjustY: -20
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/PropertyPanel/StatPanel*/*/StatTipPanel/Frame/Text'
+  sampleText: Knowledge gained from learning
+  idealFontSize: 16.0
+  allowWordWrap: true
+  allowAutoSizing: false
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/PropertyPanel/StatPanel*/*/Title'
+  sampleText: Cultivation
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustWidth: 70
+  adjustHeight: 20
+  adjustX: -70
+  adjustY: -6
+  alignment: topLeft
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/*/Title'
+  sampleText: Qinggong
+  idealFontSize: 16.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustWidth: 120
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/PropertyPanel/Header*'
+  sampleText: Attributes
+  idealFontSize: 26.0
+  allowWordWrap: true
+  adjustY: -20
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/PropertyPanel/Header'
+  sampleText: Attributes
+  idealFontSize: 26.0
+  allowWordWrap: true
+  adjustX: -5
+  adjustY: -20
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/CombatStat (2)/*/Name'
+  sampleText: Power of Hidden Weapons
+  idealFontSize: 12.0
+  allowWordWrap: true
+  adjustWidth: -50
+  adjustHeight: 50
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/CombatStat (2)/*/Value'
+  sampleText: "20"
+  idealFontSize: 20.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/PropertyPanel/StatPanel*/StatPanel*/Text'
+  sampleText: Brute
+  idealFontSize: 14.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustWidth: 70
+  adjustHeight: 20
+  adjustX: 80
+  adjustY: -6
+  alignment: topLeft
+
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Buttons/*/*/Text (TMP)'
+  sampleText: Attributes
+  idealFontSize: 18
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/SkillPanel/Scroll View/Viewport/Content/Skill_Item(Clone)/*/Name'
+  sampleText: As swift as the wind
+  idealFontSize: 18.0
+  adjustHeight: 40
+  adjustWidth: 40
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Property/Panels/SkillPanel/Scroll View/Viewport/Content/Skill_Item(Clone)/*/Level'
+  idealFontSize: 18.0
+  allowWordWrap: true
+  adjustX: 40
+
+# TODO: Figure out why this wont expand
+- path: '[UI]/TopPanel/StatusPanel/Container/TitleFlag/Title'
+  sampleText: Status
+  idealFontSize: 60.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustWidth: 20
+  
+# Social  
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Social/Description/Title'
+  sampleText: Biographies
+  idealFontSize: 32.0
+  allowWordWrap: true
+  adjustY: 20
+  adjustWidth: 20
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Social/Description/Buttons/Toggle*'
+  sampleText: &o3 One
+  idealFontSize: 20.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Social/Charater/Info/Name'
+  sampleText: Nangong Qian
+  idealFontSize: 30.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Social/Charater/Info/Title'
+  idealFontSize: 26.0
+  allowWordWrap: true
+
+# Bag
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Item/Detail/Title/Text'
+  sampleText: Warm Yang Blood Circulation Talisman
+  idealFontSize: 28.0
+  allowWordWrap: true
+  adjustWidth: 150
+  adjustX: -50
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Item/Type/GroupType/*/*/Text (TMP)'
+  sampleText: Miscellaneous
+  idealFontSize: 24
+  adjustWidth: 20
+  allowWordWrap: true
+- path: '[UI]/TopPanel/StatusPanel/Container/Panels/Item/Detail/List/*/Scroll View/Viewport/Content/*'
+  sampleText: Nangong Elegant Fan
+  idealFontSize: 16.0
+  allowWordWrap: true
+
+# Training
+- path: '[UI]/MainUI/Layer_5/Picture/Text'
+  sampleText: Events
+  idealFontSize: 30.0
+  allowWordWrap: true
+  adjustWidth: 50
+
+- path: '[UI]/TopPanel/MartialPanel/Container/Panel/Buttons/*/*/Text'
+  sampleText: Swordsmanship
+  idealFontSize: 16.0
+  allowWordWrap: true
+  adjustWidth: 110
+  adjustX: -80
+- path: '[UI]/TopPanel/MartialPanel/Container/Panel/Panels/*/Scroll View/Viewport/Content/MartialItem(Clone)/*/Name'
+  sampleText: Cloud Sky Thunderbolt Blade
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustWidth: -20
+  adjustHeight: 20
+
+- path: '[UI]/TopPanel/MartialPanel/Container/Panel/Detail/Points/MaxCountText'
+  sampleText: 'Maximum Spend:'
+  idealFontSize: 14.0
+  allowWordWrap: true
+  adjustX: -50
+- path: '[UI]/TopPanel/MartialPanel/Container/Panel/Detail/Name'
+  sampleText: 'Jianghu Ghostly Chronicles: Continuation'
+  idealFontSize: 30.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/MartialPanel/Container/Panel/Panels/MartialListPanel*/Header/Text'
+  sampleText: Thrown Weapons
+  idealFontSize: 20.0
+  allowWordWrap: true

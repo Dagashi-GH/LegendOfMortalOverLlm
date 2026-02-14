@@ -2005,4 +2005,8 @@
   badtrans: true
   direct: don’t pat already follow me come you touched dirty thing hands must use alcohol water wash
   literal: Bie pai le, gen wo guo lai. Ni peng le zang dong xi, shou yao yong jiu shui xi guo
-
+- raw: 兩
+  result: Taels
+  badtrans: true
+  direct: Two
+  literal: Liang
