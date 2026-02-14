@@ -270,3 +270,140 @@
   sampleText: Thrown Weapons
   idealFontSize: 20.0
   allowWordWrap: true
+
+- path: '[UI]/MainUI/Layer_5/StatModPlaceholder/*/Title'
+  sampleText: Martial Arts  
+  idealFontSize: 14.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustWidth: 50
+  adjustHeight: 20
+  adjustX: 0
+  adjustY: -6
+  alignment: topLeft
+- path: '[UI]/MainUI/Layer_5/StatModPlaceholder/*/Value'
+  sampleText: Moderate
+  idealFontSize: 14.0
+  allowWordWrap: true
+  allowAutoSizing: false
+  adjustWidth: 50
+  adjustHeight: 20
+  adjustX: 0
+  adjustY: -10
+  alignment: topLeft
+  
+# Battle 
+- path: '[UI]/MainUI/Layer_3/ActionButtonPanel/ActionText/Text (2)'
+  sampleText: Command
+  idealFontSize: 30.0
+  allowWordWrap: true
+  adjustWidth: 50
+  adjustX: -30
+  adjustY: 50
+- path: '[UI]/MainUI/Layer_3/ActionButtonPanel/Action_*/Cost'
+  sampleText: 'Consumption of energy: 3'
+  idealFontSize: 16.0
+  adjustWidth: 100
+  allowWordWrap: true
+  adjustY: -80
+- path: '[UI]/MainUI/Layer_3/ActionButtonPanel/Action_*/Name'
+  sampleText: Verbal attack
+  idealFontSize: 20.0
+  adjustWidth: 100
+  alignment: topLeft
+  allowWordWrap: true
+  adjustX: -70
+- path: '[UI]/MainUI/Layer_3/ActionButtonPanel/Action_*/Info'
+  sampleText: Hit Rate 94%
+  idealFontSize: 16.0
+  adjustWidth: 0
+  adjustX: 10
+  allowWordWrap: true
+- path: '[UI]/MainUI/Layer_2/EnemyStatus/ActionInfo/*Name'
+  sampleText: Verbal attack
+  idealFontSize: 20.0
+  adjustWidth: 100
+  alignment: topLeft
+  allowWordWrap: true
+  adjustX: -10
+  adjustY: -20
+- path: '[UI]/MainUI/Layer_2/EnemyStatus/ActionInfo/Info'
+  sampleText: Mouth Power 7
+  idealFontSize: 18.0
+  allowWordWrap: true
+- path: '[UI]/MainUI/Layer_2/PlayerStatus/ActionInfo/*Name'
+  sampleText: Prepare to be beaten
+  idealFontSize: 20.0
+  adjustWidth: 100
+  alignment: topLeft
+  allowWordWrap: true
+  adjustX: -30
+  adjustY: -20
+  
+# Chronicles 
+- path: UI/Layer_3/LibraryPanel/Buttons/MenuButton_*/*/Text
+  sampleText: Book of Life and Death
+  idealFontSize: 30.0
+  allowWordWrap: true
+
+- path: UI/Layer_3/LibraryPanel/Panels/Legend/SaveLegendPanel/Container/LoadLegendSlot*/Text
+  sampleText: No record
+  idealFontSize: 16.0
+  allowWordWrap: true
+  adjustWidth: 10
+  adjustX: -4
+  adjustY: -20
+
+# New Game
+- path: '[UI]/TopPanel/FateBonusPanel/Container/Buttons/StatusButton*/Text (TMP)'
+  sampleText: Attributes
+  idealFontSize: 18.0
+  allowWordWrap: true
+  adjustWidth: 100
+  alignment: center
+  adjustX: -20
+- path: '[UI]/TopPanel/FateBonusPanel/Container/TitleFlag_FateBonus/Title'
+  sampleText: Inheritance
+  idealFontSize: 36.0
+  allowWordWrap: true
+  characterSpacing: 5
+- path: '[UI]/TopPanel/FateBonusPanel/Container/Panels/Property/Scroll View/Viewport/Container/BonusProperty_Upgrade(Clone)/AddValue'
+  sampleText: "10"
+  idealFontSize: 22.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/FateBonusPanel/Container/Panels/Property/Scroll View/Viewport/Container/BonusProperty_Upgrade(Clone)/Value'
+  sampleText: &o6 "0"
+  idealFontSize: 22.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/FateBonusPanel/Container/Panels/Property/Scroll View/Viewport/Container/*/Name'
+  sampleText: Forging
+  idealFontSize: 18.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/FateBonusPanel/Container/Panels/Social/Scroll View/Viewport/Content/*/Name'
+  sampleText: Nangong Shen
+  idealFontSize: 18.0
+  allowWordWrap: true
+- path: '[UI]/TopPanel/FateBonusPanel/Container/Panels/Home/Container/*/Name'
+  sampleText: Beggar Sect Affinity
+  idealFontSize: 18.0
+  allowWordWrap: true
+
+# Menus
+- path: StoryCore/MenuDialogs/*/Header
+  sampleText: Back Mountain
+  idealFontSize: 60.0
+  adjustWidth: 200
+  allowWordWrap: true
+- path: StoryCore/MenuDialogs/*/ButtonGroup/*/*/Type
+  sampleText: Freedom
+  idealFontSize: 24.0
+  allowWordWrap: true
+  adjustWidth: 20
+  adjustX: -20
+  adjustY: -10
+- path: StoryCore/MenuDialogs/*/ButtonGroup/*/*/Title
+  sampleText: Carrying firewood
+  idealFontSize: 24.0
+  allowWordWrap: true
+  adjustWidth: 24
+  adjustX: -20
