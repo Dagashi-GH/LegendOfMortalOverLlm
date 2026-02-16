@@ -25,12 +25,6 @@
 - raw: 防禦
   result: Defense
   badtrans: true
-- raw: 絕招
-  result: Ultimate
-  badtrans: true
-- raw: 爆發
-  result: Burst
-  badtrans: true
 - raw: 心上人
   result: Beloved
   badtrans: true
@@ -54,9 +48,6 @@
   badtrans: true
 - raw: 攻擊：基礎殺傷力。
   result: "Attack: Base damage"
-  badtrans: true
-- raw: 門派的向心力。
-  result: Cohesion of the sect
   badtrans: true
 - raw: 門派的門人數量。
   result: Number of disciples in the sect
@@ -155,7 +146,7 @@
   result: Ox Head
   badtrans: true
 - raw: 家丁
-  result: Household servant
+  result: Family Servant
   badtrans: true
 - raw: 鐵匠
   result: Blacksmith
@@ -187,9 +178,6 @@
 - raw: 金士兵
   result: Golden Soldier
   badtrans: true
-- raw: 大夫
-  result: Doctor
-  badtrans: true
 - raw: 蒙古摔角手
   result: Mongolian wrestler
   badtrans: true
@@ -217,9 +205,6 @@
 - raw: 山賊
   result: Mountain bandit
   badtrans: true
-- raw: 飛石幫
-  result: Flying Stone Gang
-  badtrans: true
 - raw: 賓客
   result: Guest
   badtrans: true
@@ -245,7 +230,7 @@
   result: Waiter
   badtrans: true
 - raw: 女俠
-  result: Female hero
+  result: Heroine
   badtrans: true
 - raw: 蒙面人
   result: Masked Person
@@ -302,7 +287,7 @@
   result: Jinxiang Disciple
   badtrans: true
 - raw: 點蒼女弟子
-  result: Dian Cang Female Disciple
+  result: Diancang Female Disciple
   badtrans: true
 - raw: 鐵拳弟子
   result: Iron Fist Disciple
@@ -329,7 +314,7 @@
   result: Tang Clan Disciples
   badtrans: true
 - raw: 點蒼弟子
-  result: Dian Cang Disciple
+  result: Diancang Disciple
   badtrans: true
 - raw: 玄功弟子
   result: Mystic Skill Disciple
@@ -352,9 +337,6 @@
 - raw: 方丈
   result: Abbot
   badtrans: true
-- raw: 勾魂叟
-  result: Soul Stealer
-  badtrans: true
 - raw: 破戒僧
   result: Renegade Monk
   badtrans: true
@@ -371,19 +353,13 @@
   result: Eagle Person
   badtrans: true
 - raw: 前武林盟主
-  result: Former Wulin Leader
+  result: Former Wulin Alliance Leader
   badtrans: true
 - raw: 狂犬
   result: Mad Dog
   badtrans: true
 - raw: 唐門掌門
   result: Tang Clan Sect Leader
-  badtrans: true
-- raw: 飛石幫主
-  result: Flying Stone Gang Leader
-  badtrans: true
-- raw: 千面人魔
-  result: Thousand Faced Demon
   badtrans: true
 - raw: 拳師
   result: Fist Master
@@ -456,7 +432,7 @@
   result: Fire Flame Mountain Forging Manual
   badtrans: true
 - raw: 江湖鬼蜮錄
-  result: Records of Jianghu Ghosts and Spirits
+  result: Jianghu Ghostly Chronicles
   badtrans: true
 - raw: 江湖鬼蜮錄．續
   result: "Jianghu Ghostly Chronicles: Continuation"
@@ -703,9 +679,6 @@
   badtrans: true
 
 # Combat Skills
-- raw: 南溪
-  result: Nanxi
-  badtrans: true
 - raw: 第一極招
   result: First Extreme Move
   badtrans: true
@@ -748,9 +721,6 @@
 - raw: 獅子之心
   result: Heart of the Lion
   badtrans: true
-- raw: 趙逵
-  result: Zhao Kui
-  badtrans: true
 - raw: 點到為止
   result: To the point
   badtrans: true
@@ -787,17 +757,11 @@
 - raw: 胡椒粉毒
   result: Pepper Powder Poison
   badtrans: true
-- raw: 葉雲裳
-  result: Ye Yunshang
-  badtrans: true
 - raw: 彼岸香
   result: Fragrant Shore
   badtrans: true
 - raw: 狼嚎
   result: Wolf Howl
-  badtrans: true
-- raw: 鐵冠道人
-  result: Iron Crown Daoist
   badtrans: true
 - raw: 鳥說髒話
   result: Birds curse
@@ -809,10 +773,10 @@
   result: Torture
   badtrans: true
 - raw: 內功反震
-  result: Internal Skill Rebound
+  result: Neigong Rebound
   badtrans: true
 - raw: 醍醐軟筋散
-  result: Dihua Soft Muscle Powder
+  result: Soft Muscle Powder
   badtrans: true
 - raw: 絕世
   result: Peerless
@@ -895,9 +859,6 @@
 - raw: 金錢鏢
   result: Money Dart
   badtrans: true
-- raw: 飛燕流星翎
-  result: Flying Swallow Meteor Feather
-  badtrans: true
 - raw: 無定飛梭
   result: Unpredictable Flying Shuttle
   badtrans: true
@@ -914,7 +875,7 @@
   result: Iron Arm Flying Fist
   badtrans: true
 - raw: 霹靂刀
-  result: Thunder Blade
+  result: Thunderbolt Blade
   badtrans: true
 - raw: 地獄使者Lv1
   result: Hell Messenger Lv1
@@ -1501,9 +1462,6 @@
 - raw: 千機百變Lv6
   result: Thousand Changes, Hundred Transformations Lv6
   badtrans: true
-- raw: 肩甲
-  result: Scapula
-  badtrans: true
 - raw: 千機百變Lv7
   result: Thousand Changes, Hundred Transformations Lv7
   badtrans: true
@@ -1854,9 +1812,6 @@
   badtrans: true
 - raw: 儒學
   result: Confucianism
-  badtrans: true
-- raw: 暗器
-  result: Hidden Weapon
   badtrans: true
 - raw: 刀劍
   result: Blade and sword

@@ -6,11 +6,15 @@ namespace Translate.Support;
 public class GlossaryLine
 {
     public string Raw { get; set; } = string.Empty;
+    public string RawSimplified { get; set; } = string.Empty;
+    public string RawTraditional { get; set; } = string.Empty;
     public string Result { get; set; } = string.Empty;
+
 
     [YamlMember(Alias = "allowalt")]
     public List<string> AllowedAlternatives { get; set; } = [];
-    public string Transliteration { get; set; } = string.Empty;
+    public string Direct { get; set; } = string.Empty;
+    public string Literal { get; set; } = string.Empty;
     public string Context { get; set; } = string.Empty;
 
     [YamlMember(Alias = "misuse")]
@@ -47,9 +51,11 @@ public class GlossaryLine
                 continue;
 
             if (raw.Contains(line.Raw))
-            {
-                prompt.AppendLine(ToPromptString(line.Raw, line.Result, line.AllowedAlternatives));                
-            }
+                prompt.AppendLine(ToPromptString(line.Raw, line.Result, line.AllowedAlternatives));
+            else if (line.RawSimplified != string.Empty && raw.Contains(line.RawSimplified))
+                prompt.AppendLine(ToPromptString(line.RawSimplified, line.Result, line.AllowedAlternatives));
+            else if (line.RawTraditional != string.Empty && raw.Contains(line.RawTraditional))
+                prompt.AppendLine(ToPromptString(line.RawTraditional, line.Result, line.AllowedAlternatives));
         }
 
         if (prompt.Length > 0)
@@ -75,14 +81,11 @@ public class GlossaryLine
 
         //prompt.AppendLine($"- \"{raw}\": \"{translated}\"");
 
-        prompt.AppendLine($"- \"{raw}\"");
-        prompt.AppendLine($"  - \"{translated}\"");
+        prompt.AppendLine($"- raw: \"{raw}\"");
+        prompt.AppendLine($"  - trans: \"{translated}\"");
 
         foreach (var alternative in alternatives ?? [])
-        {
-            prompt.AppendLine($"  - \"{alternative}\"");
-        }
-
+            prompt.AppendLine($"  - trans: \"{alternative}\"");
         return prompt.ToString();
     }
 }
