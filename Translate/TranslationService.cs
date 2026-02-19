@@ -58,17 +58,6 @@ public static class TranslationService
 
                     if (split.Text.Length <= charsToCache && !cache.ContainsKey(split.Text))
                         cache.Add(split.Text, split.Translated);
-
-                    //// EXPERIMENTAL: Add in splits to cache
-                    //var splitsTranslated = CalculateSubSplits(split.Translated);
-                    //var splitsRaw = CalculateSubSplits(split.Text);
-                    //if (splitsTranslated.foundSplit
-                    //    && splitsRaw.foundSplit
-                    //    && splitsRaw.splits.Count == splitsTranslated.splits.Count)
-                    //{
-                    //    for (int i = 0; i < splitsTranslated.splits.Count; i++)
-                    //        cache.Add(splitsRaw.splits[i], splitsTranslated.splits[i]);
-                    //}
                 }
             }
 
@@ -108,14 +97,14 @@ public static class TranslationService
         foreach (var textFileToTranslate in GameTextFiles.TextFilesToSplit)
         {
             var inputFile = $"{inputPath}/{textFileToTranslate.Path}";
-            var outputFile = $"{outputPath}/{textFileToTranslate.Path}";
+            var outputFile = $"{outputPath}/{textFileToTranslate.Path}.yaml";
 
             if (!File.Exists(outputFile))
                 File.Copy(inputFile, outputFile);
 
             var content = File.ReadAllText(outputFile);
 
-            Console.WriteLine($"Processing File: {outputFile}");
+            Console.WriteLine($"Processing File: {textFileToTranslate.Path}");
 
             var serializer = Yaml.CreateSerializer();
             var deserializer = Yaml.CreateDeserializer();
@@ -208,7 +197,7 @@ public static class TranslationService
                 logProcessed++;
 
                 if (batchSize != 1 || (logProcessed % BatchlessLog == 0))
-                    Console.WriteLine($"Line: {i + batchRange} of {totalLines} File: {outputFile} Unprocessable: {incorrectLineCount} Processed: {totalRecordsProcessed}");
+                    Console.WriteLine($"Line: {i + batchRange} of {totalLines} File: {textFileToTranslate.Path} Unprocessable: {incorrectLineCount} Processed: {totalRecordsProcessed}");
 
                 if (bufferedRecords > BatchlessBuffer)
                 {
@@ -225,40 +214,7 @@ public static class TranslationService
         }
     }
 
-    public static (bool foundSplit, List<string> splits) CalculateSubSplits(string origSplit)
-    {
-        var response = new List<string>();
-        bool foundSplit = false;
-
-        foreach (var splitCharacters in GameTextFiles.SplitCharactersList)
-        {
-            if (origSplit.Contains(splitCharacters))
-            {
-                foundSplit = true;
-                var newSplits = origSplit.Split(splitCharacters);
-
-                foreach (var newSplit in newSplits)
-                {
-                    if (!string.IsNullOrEmpty(newSplit))
-                    {
-                        var subSplits = CalculateSubSplits(newSplit);
-                        if (subSplits.foundSplit)
-                            response.AddRange(subSplits.splits);
-                        else
-                            response.Add(newSplit);
-                    }
-                }
-
-                // Break after processing one split character type
-                // Because recursion would have got the rest
-                return (foundSplit, response);
-            }
-        }
-
-        return (foundSplit, response);
-    }
-
-    public static async Task<(bool split, string result)> SplitIfNeededAsync(string splitCharacters, LlmConfig config, string raw, HttpClient client, TextFileToSplit textFile)
+    public static async Task<(bool split, string result)> SplitOnCharsIfNeededAsync(string splitCharacters, LlmConfig config, string raw, HttpClient client, TextFileToSplit textFile)
     {
         if (raw.Contains(splitCharacters))
         {
@@ -297,55 +253,62 @@ public static class TranslationService
         return (false, string.Empty);
     }
 
-    public static async Task<(bool split, string result)> SplitBracketsIfNeededAsync(LlmConfig config, string raw, HttpClient client, TextFileToSplit textFile)
+    public static async Task<(bool split, string result)> SplitBracketsRegexIfNeededAsync(LlmConfig config, string raw, HttpClient client, TextFileToSplit textFile)
     {
-        if (raw.Contains('('))
+        // Collect all matches across all patterns and sort by position so multiple bracket types in
+        // the same string are all handled in a single pass (e.g. "天竺国《无量寿经》【副本】4000钱")
+        var allMatches = GameTextFiles.SplitRegexPatterns
+            .SelectMany(pattern => Regex.Matches(raw, pattern).Cast<Match>())
+            .OrderBy(m => m.Index)
+            .ToList();
+
+        if (allMatches.Count == 0)
+            return (false, string.Empty);
+
+        // Pre-translate each match's inner content separately and wrap it in single quotes as a
+        // placeholder (e.g. 'Sutra of Immeasurable Life') so the LLM treats it as a proper noun
+        // and preserves it during full-sentence translation. After translation, restore the original
+        // bracket characters by replacing 'translatedText' with openBracket+translatedText+closeBracket.
+        var bracketRestorations = new List<(string quotedText, char openBracket, char closeBracket)>();
+        var modifiedRaw = raw;
+        var lastOriginalIndex = 0;
+        var offset = 0;
+
+        foreach (var match in allMatches)
         {
-            string output = string.Empty;
-            string pattern = @"([^\(]*|(?:.*?))\(([^\)]*)\)|([^\(\)]*)$"; // Matches text outside and inside brackets
+            // Skip overlapping matches
+            if (match.Index < lastOriginalIndex)
+                continue;
 
-            MatchCollection matches = Regex.Matches(raw, pattern);
-            foreach (Match match in matches)
-            {
-                var outsideStart = match.Groups[1].Value.Trim();
-                var outsideEnd = match.Groups[3].Value.Trim();
-                var inside = match.Groups[2].Value.Trim();
+            var openBracket = match.Value[0];
+            var closeBracket = match.Value[^1];
+            var inner = match.Value[1..^1];
 
-                if (!string.IsNullOrEmpty(outsideStart))
-                {
-                    var trans = await TranslateSplitAsync(config, outsideStart, client, textFile);
-                    output += trans.Result;
+            var innerTrans = await TranslateSplitAsync(config, inner, client, textFile);
+            if (!innerTrans.Valid && !config.SkipLineValidation)
+                return (true, string.Empty);
 
-                    // If one fails we have to kill the lot
-                    if (!trans.Valid && !config.SkipLineValidation)
-                        return (true, string.Empty);
-                }
+            var quotedText = $"'{innerTrans.Result}'";
+            bracketRestorations.Add((quotedText, openBracket, closeBracket));
 
-                if (!string.IsNullOrEmpty(inside))
-                {
-                    var trans = await TranslateSplitAsync(config, inside, client, textFile);
-                    output += $" ({trans.Result}) ";
-
-                    // If one fails we have to kill the lot
-                    if (!trans.Valid && !config.SkipLineValidation)
-                        return (true, string.Empty);
-                }
-
-                if (!string.IsNullOrEmpty(outsideEnd))
-                {
-                    var trans = await TranslateSplitAsync(config, outsideEnd, client, textFile);
-                    output += trans.Result;
-
-                    // If one fails we have to kill the lot
-                    if (!trans.Valid && !config.SkipLineValidation)
-                        return (true, string.Empty);
-                }
-            }
-
-            return (true, output.Trim());
+            var adjustedIndex = match.Index + offset;
+            modifiedRaw = modifiedRaw[..adjustedIndex] + quotedText + modifiedRaw[(adjustedIndex + match.Length)..];
+            offset += quotedText.Length - match.Length;
+            lastOriginalIndex = match.Index + match.Length;
         }
 
-        return (false, string.Empty);
+        // Translate the full sentence with pre-translated placeholders to preserve surrounding context
+        var fullTrans = await TranslateSplitAsync(config, modifiedRaw, client, textFile);
+        if (!fullTrans.Valid && !config.SkipLineValidation)
+            return (true, string.Empty);
+
+        // Restore the original bracket characters: replace 'translatedText' with openBracket+translatedText+closeBracket
+        var result = fullTrans.Result;
+        foreach (var (quotedText, openBracket, closeBracket) in bracketRestorations)
+            result = result
+                .Replace(quotedText, $" {openBracket}{quotedText[1..^1]}{closeBracket} ");
+
+        return (true, result.Trim());
     }
 
     public static bool IsGameObjectReference(string raw)
@@ -387,16 +350,14 @@ public static class TranslationService
         if (!Regex.IsMatch(preparedRaw, pattern))
             return new ValidationResult(true, LineValidation.CleanupLineBeforeSaving(preparedRaw, preparedRaw, textFile, tokenReplacer));
 
-        // Brackets Split first - so it doesnt split stuff inside the brackets
-        //var (split2, result2) = await SplitBracketsIfNeededAsync(config, preparedRaw, client, fileName);
-        //if (split2)
-        //    return LineValidation.CleanupLineBeforeSaving(result2, preparedRaw, fileName, tokenReplacer);
+        var (regexSplit, regexResult) = await SplitBracketsRegexIfNeededAsync(config, raw, client, textFile);
+        if (regexSplit)
+            return new ValidationResult(LineValidation.CleanupLineBeforeSaving(regexResult, preparedRaw, textFile, tokenReplacer));
 
-        // TODO: We really should move this segementation to the object model itself and split it at export time
         // We do segementation here since saves context window by splitting // "。" doesnt work like u think it would        
         foreach (var splitCharacters in GameTextFiles.SplitCharactersList)
         {
-            var (split, result) = await SplitIfNeededAsync(splitCharacters, config, preparedRaw, client, textFile);
+            var (split, result) = await SplitOnCharsIfNeededAsync(splitCharacters, config, preparedRaw, client, textFile);
 
             // Because its recursive we want to bail out on the first successful one
             if (split)
@@ -441,11 +402,34 @@ public static class TranslationService
                 // Append history of failures
                 if (!validationResult.Valid && config.CorrectionPromptsEnabled)
                 {
-                    var correctionPrompt = LineValidation.CalulateCorrectionPrompt(config, validationResult, preparedRaw, llmResult);
+                    // Use sentence-by-sentence correction for Chinese character issues
+                    if (validationResult.RequiresSentenceBySentenceCorrection)
+                    {
+                        var correctedResult = await CorrectSentenceBySentenceAsync(client, config, preparedRaw, llmResult, textFile);
+                        preparedResult = LineValidation.PrepareResult(preparedRaw, correctedResult);
+                        validationResult = LineValidation.CheckTransalationSuccessful(config, preparedRaw, preparedResult, textFile);
+                        validationResult.Result = LineValidation.CleanupLineBeforeSaving(validationResult.Result, preparedRaw, textFile, tokenReplacer);
 
-                    // Regenerate base messages so we dont hit token limit by constantly appending retry history
-                    messages = GenerateBaseMessages(config, preparedRaw, textFile);
-                    AddCorrectionMessages(messages, llmResult, correctionPrompt);
+                        if (config.SkipLineValidation)
+                            validationResult.Valid = true;
+
+                        // If sentence-by-sentence correction succeeded, break out of retry loop
+                        // If it still failed, regenerate messages with the corrected result for next retry
+                        if (!validationResult.Valid)
+                        {
+                            messages = GenerateBaseMessages(config, preparedRaw, textFile);
+                            var correctionPrompt = CalulateCorrectionPrompt(config, validationResult, preparedRaw, correctedResult);
+                            AddCorrectionMessages(messages, correctedResult, correctionPrompt);
+                        }
+                    }
+                    else
+                    {
+                        var correctionPrompt = CalulateCorrectionPrompt(config, validationResult, preparedRaw, llmResult);
+
+                        // Regenerate base messages so we dont hit token limit by constantly appending retry history
+                        messages = GenerateBaseMessages(config, preparedRaw, textFile);
+                        AddCorrectionMessages(messages, llmResult, correctionPrompt);
+                    }
                 }
 
                 retryCount++;
@@ -459,11 +443,51 @@ public static class TranslationService
             return new ValidationResult(string.Empty);
         }
     }
-
     public static void AddCorrectionMessages(List<object> messages, string result, string correctionPrompt)
     {
         messages.Add(LlmHelpers.GenerateAssistantPrompt(result));
         messages.Add(LlmHelpers.GenerateUserPrompt(correctionPrompt));
+    }
+
+    public static async Task<string> CorrectSentenceBySentenceAsync(HttpClient client, LlmConfig config, string raw, string failedResult, TextFileToSplit textFile)
+    {
+        // Split the failed result by sentences (period followed by space or end of string)
+        var sentences = failedResult.Split(new[] { ". " }, StringSplitOptions.None);
+        var correctedSentences = new List<string>();
+
+        for (int i = 0; i < sentences.Length; i++)
+        {
+            var sentence = sentences[i];
+
+            // Add period back if not the last sentence
+            if (i < sentences.Length - 1)
+                sentence += ".";
+
+            // Only correct sentences that contain Chinese characters
+            if (Regex.IsMatch(sentence, LineValidation.ChineseCharPattern) && !Regex.IsMatch(sentence, LineValidation.ChinesePlaceholderPattern))
+            {
+                // For individual sentence correction, use a minimal prompt without the full original text
+                // This prevents the LLM from re-translating everything
+                var messages = new List<object>
+                {
+                    LlmHelpers.GenerateSystemPrompt(config.Prompts["BaseSystemPrompt"]),
+                    LlmHelpers.GenerateUserPrompt("The following sentence contains untranslated Chinese characters. Translate all Chinese characters to English while keeping the rest of the sentence intact."),
+                    LlmHelpers.GenerateAssistantPrompt(sentence),
+                    LlmHelpers.GenerateUserPrompt("Translate all Chinese characters in this sentence to English. " + config.Prompts["BaseCorrectionSuffixPrompt"])
+                };
+
+                var correctedSentence = await TranslateMessagesAsync(client, config, messages);
+                correctedSentences.Add(correctedSentence.Trim());
+            }
+            else
+            {
+                // Sentence is fine, keep it as is
+                correctedSentences.Add(sentence);
+            }
+        }
+
+        // Rejoin sentences with proper spacing
+        return string.Join(" ", correctedSentences);
     }
 
     public static List<object> GenerateBaseMessages(LlmConfig config, string raw, TextFileToSplit splitFile, string additionalSystemPrompt = "")
@@ -480,17 +504,21 @@ public static class TranslationService
             else if (raw.Contains("</color>"))
                 basePrompt.AppendLine(config.Prompts["DynamicCloseColorPrompt"]);
 
-            if (raw.Contains("·"))
-                basePrompt.AppendLine(config.Prompts["DynamicSegement1Prompt"]);
+            // Qwen 2.5 hates size tags
+            if (raw.Contains("<size"))
+                basePrompt.AppendLine(config.Prompts["DynamicSizePrompt"]);
+            else if (raw.Contains("</size>"))
+                basePrompt.AppendLine(config.Prompts["DynamicCloseSizePrompt"]);
+
+            //if (raw.Contains("·"))
+            //    basePrompt.AppendLine(config.Prompts["DynamicSegement1Prompt"]);
 
             if (raw.Contains("<"))
             {
-                var rawTags = HtmlTagHelpers.ExtractTagsListWithAttributes(raw, "color");
+                var rawTags = HtmlTagHelpers.ExtractTagsListWithAttributes(raw, "color", "size");
                 if (rawTags.Count > 0)
                 {
                     var prompt = string.Format(config.Prompts["DynamicTagPrompt"], string.Join("\n", rawTags));
-                    //Console.WriteLine(raw);
-                    //Console.WriteLine(prompt);
                     basePrompt.AppendLine(prompt);
                 }
             }
@@ -506,8 +534,15 @@ public static class TranslationService
 
         if (splitFile.EnableGlossary)
         {
+            basePrompt.AppendLine("");
             basePrompt.AppendLine(config.Prompts["BaseGlossaryPrompt"]);
             basePrompt.AppendLine(GlossaryLine.AppendPromptsFor(raw, config.GlossaryLines, splitFile.Path));
+        }
+
+        if (splitFile.EnableBasePrompts)
+        {
+            basePrompt.AppendLine("");
+            basePrompt.AppendLine(config.Prompts["BaseSystemSuffixPrompt"]);
         }
 
         return
@@ -515,6 +550,16 @@ public static class TranslationService
             LlmHelpers.GenerateSystemPrompt(basePrompt.ToString()),
             LlmHelpers.GenerateUserPrompt(raw)
         ];
+    }
+
+    public static string CalulateCorrectionPrompt(LlmConfig config, ValidationResult validationResult, string raw, string result)
+    {
+        // Return the concatenated specific correction prompts with the shared suffix
+        // Context is provided by conversation structure (User: original, Assistant: failed attempt, User: corrections)
+        if (string.IsNullOrEmpty(validationResult.CorrectionPrompt))
+            return string.Empty;
+
+        return validationResult.CorrectionPrompt + config.Prompts["BaseCorrectionSuffixPrompt"];
     }
 
     public static void AddPromptWithValues(this StringBuilder builder, LlmConfig config, string promptName, params string[] values)
@@ -570,7 +615,7 @@ public static class TranslationService
 
             var result = string.Empty;
 
-            if (responseBody.Contains("choices"))
+            if (responseBody.Contains("\"choices\":"))
             {
                 result = jsonDoc.RootElement
                     .GetProperty("choices")[0]
@@ -593,11 +638,16 @@ public static class TranslationService
 
             return result;
         }
-        catch
+        catch (Exception e)
         {
-            Console.WriteLine($"Exception on: {requestData}");
-            //throw;
-            return "";
+            if (config.SkipLineValidation)
+            {
+                Console.WriteLine($"Exception on: {requestData}");
+                Console.WriteLine($"Exception message: {e.Message}");
+                return "";
+            }
+            else
+                throw;
         }
     }
 
