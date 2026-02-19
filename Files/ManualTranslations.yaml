@@ -129,7 +129,7 @@
   badtrans: true
 - raw: 馬
   result: Horse
-  badtrans: true
+  badtrans: false
 - raw: 雞
   result: Chicken
   badtrans: true
@@ -483,7 +483,7 @@
   result: Sun Tzu's Art of War
   badtrans: true
 - raw: 枯榮神功上卷
-  result: Volume One of Withered and Flourishing Divine Skill
+  result: Volume One of Withering and Flourishing Divine Skill
   badtrans: true
 - raw: 混元童子炁
   result: Primordial Youth Qi
@@ -573,7 +573,7 @@
   result: Eight Desolations and the Road to Escape
   badtrans: true
 - raw: 仙鶴迷蹤拳
-  result: Crane's Mysterious Footsteps Fist
+  result: Immortal Crane Lost Trace Fist
   badtrans: true
 - raw: 金剛腿
   result: Diamond Leg
@@ -794,19 +794,19 @@
   result: Mechanism Box ‑ Slaughter Type
   badtrans: true
 - raw: 機關篋笥．聖衣型態
-  result: Mechanism Chest. Sacred Garment Form.
+  result: Mechanism Box ‑ Sacred Garment Form.
   badtrans: true
 - raw: 戰術
   result: Tactics
   badtrans: true
 - raw: 機關篋笥
-  result: Mechanical box
+  result: Mechanism box
   badtrans: true
 - raw: 機關篋笥・狩獵型態
   result: Mechanism Box ‑ Hunting Type
   badtrans: true
 - raw: 機關篋笥・捕鳥型態
-  result: Trap Box ‑ Bird Catching Type
+  result: Mechanism Box ‑ Bird Catching Type
   badtrans: true
 - raw: 猿王劈山
   result: Yuan Wang Splitting Mountain
@@ -1064,10 +1064,10 @@
   result: Medical Skill Lv7
   badtrans: true
 - raw: 仙鶴迷蹤步
-  result: Immortal Crane's Elusive Steps
+  result: Immortal Crane Lost Trace Steps
   badtrans: true
 - raw: 仙鶴迷蹤
-  result: Immortal Crane's Elusive Steps
+  result: Immortal Crane Lost Trace 
   badtrans: true
 - raw: 醫術Lv9
   result: Medical Skill Lv9
@@ -1319,13 +1319,13 @@
   result: Iron Cloth Shirt Lv8
   badtrans: true
 - raw: 核棗釘Lv1
-  result: Nuclear Jujube Nail Lv1
+  result: Jujube Pit Nail Lv1
   badtrans: true
 - raw: 鐵布衫Lv9
   result: Iron Cloth Shirt Lv9
   badtrans: true
 - raw: 核棗釘
-  result: Nuclear Date Nail
+  result: Jujube Pit Nail
   badtrans: true
 - raw: 金剛腿Lv6
   result: Diamond Leg Lv6
@@ -1793,7 +1793,7 @@
   result: Disciple's health points
   badtrans: true
 - raw: 內功
-  result: Internal Skill
+  result: Neigong
   badtrans: true
 - raw: 形意拳
   result: Xingyi Fist
@@ -1917,7 +1917,7 @@
   literal: He
 - raw: "放馬過來。"
   result: Bring it on!
-  badtrans: true
+  badtrans: false
   direct: Release horse come over
   literal: Fang Ma Guo Lai
 - raw: 清理門戶

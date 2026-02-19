@@ -84,25 +84,25 @@ public class TranslationWorkflowTests
 
         var badStrings = new List<string>
         {
-            //"⑩",
-            //"⓪",
-            //"①",
-            //"②",
-            //"③",
-            //"④",
-            //"⑤",
-            //"⑥",
-            //"⑦",
-            //"⑧",
-            //"⑨",
+            "⑩",
+            "⓪",
+            "①",
+            "②",
+            "③",
+            "④",
+            "⑤",
+            "⑥",
+            "⑦",
+            "⑧",
+            "⑨",
 
-            //"《",
-            //"〈",
-            //"「",
-            //"『",
-            //"【",
-            //"〖",
-            //"“",
+            "《",
+            "〈",
+            "「",
+            "『",
+            "【",
+            "〖",
+            "“",
         };
 
         await FileIteration.IterateTranslatedFilesInParallelAsync(WorkingDirectory, async (outputFile, textFileToTranslate, fileLines) =>
