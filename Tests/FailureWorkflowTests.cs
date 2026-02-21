@@ -117,6 +117,8 @@ Can you update the current system prompt and give me the full system prompt that
             client.Timeout = TimeSpan.FromSeconds(300);
             var config = Configuration.GetConfiguration(workingDirectory);
 
+            //config.SkipLineValidation = true;
+
             var serializer = Yaml.CreateDeserializer();
             var content = File.ReadAllText(FailingTransactionsPath);
             var failures = serializer.Deserialize<List<FailedTranslation>>(content);

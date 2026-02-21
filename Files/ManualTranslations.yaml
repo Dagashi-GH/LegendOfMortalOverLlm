@@ -329,7 +329,7 @@
   result: Xia Yulian (Temporary)
   badtrans: true
 - raw: 白衣少年
-  result: White‑clad youth
+  result: White clad youth
   badtrans: true
 - raw: 無名
   result: Wuming
@@ -567,7 +567,7 @@
   result: Luohan Fist Manual
   badtrans: true
 - raw: 清峰三十六路
-  result: Qingfeng Thirty‑Six Techniques
+  result: Qingfeng Thirty Six Techniques
   badtrans: true
 - raw: 八荒奪路逃
   result: Eight Desolations and the Road to Escape
@@ -657,10 +657,10 @@
   result: Mandarin Duck Fist and Sword Manual
   badtrans: true
 - raw: 斬天黑翼雙龍劍
-  result: Heaven‑Slaying Black Wing Twin Dragon Sword
+  result: Heaven Slaying Black Wing Twin Dragon Sword
   badtrans: true
 - raw: 三五斬妖劍
-  result: Three‑Five Demon‑Slaying Sword
+  result: Three Five Demon Slaying Sword
   badtrans: true
 - raw: 金鐘罩
   result: Golden Bell Shield
@@ -743,7 +743,7 @@
   result: Protect Yunshang
   badtrans: true
 - raw: 養命丹
-  result: Life‑Sustaining Pill
+  result: Life Sustaining Pill
   badtrans: true
 - raw: 棧道不穩
   result: Path is unstable
@@ -794,7 +794,7 @@
   result: Mechanism Box ‑ Slaughter Type
   badtrans: true
 - raw: 機關篋笥．聖衣型態
-  result: Mechanism Box ‑ Sacred Garment Form.
+  result: Mechanism Box ‑ Sacred Garment Form
   badtrans: true
 - raw: 戰術
   result: Tactics
@@ -929,7 +929,7 @@
   result: Ten Thousand Longevity Corpse Blood Needle
   badtrans: true
 - raw: 鐵石心腸
-  result: Iron‑hearted
+  result: Iron hearted
   badtrans: true
 - raw: 焚天烈焰
   result: Burning Sky Flames
@@ -1046,10 +1046,10 @@
   result: Flower Folding Technique Lv5
   badtrans: true
 - raw: 一趾御風
-  result: One‑Toe Wind Control
+  result: One Toe Wind Control
   badtrans: true
 - raw: 一趾神通
-  result: One‑Toe Divine Skill
+  result: One Toe Divine Skill
   badtrans: true
 - raw: 醫術Lv8
   result: Medical Skill Lv8
@@ -1217,7 +1217,7 @@
   result: Beware of Hidden Weapon Lv2
   badtrans: true
 - raw: 迎難而上
-  result: Face challenges head‑on
+  result: Face challenges head on
   badtrans: true
 - raw: 提防暗器Lv3
   result: Beware of Hidden Weapon Lv3
@@ -1625,7 +1625,7 @@
   result: Tang Clan Hidden Weapon Lv6
   badtrans: true
 - raw: 單手
-  result: One‑Handed
+  result: One Handed
   badtrans: true
 - raw: 牽制
   result: Restraining technique
@@ -1965,3 +1965,17 @@
   badtrans: true
   direct: Two
   literal: Liang
+- raw: 並沒有
+  rawSimplified: 并没有
+  rawTraditional: 並沒有
+  result: Not in the slightest
+  badtrans: true
+  direct: not even a little have
+  literal: bing mei you
+- raw: "放馬過來！"
+  rawSimplified: 放马过来
+  rawTraditional: 放馬過來
+  result: Bring it on!
+  badtrans: true
+  direct: release horse come
+  literal: fang ma guo lai

@@ -18,7 +18,7 @@ public class GameTextFiles
             "⑨",
             
             //"-", // This will split between other groups
-            //":", // This will split between other groups
+            ":", // This will split between other groups
             //"|",
             //"。"
             //"<br>",
@@ -28,13 +28,13 @@ public class GameTextFiles
     public static string[] SplitRegexPatterns = [
         //@"(.*?)",
         //@"（.*?）",
-        @"《.*?》",
-        @"\〈.*?\〉",
-        @"\「.*?\」",
-        @"\『.*?\』",
-        @"\【.*?\】",
-        @"\〖.*?\〗",
-        @"\“.*?”"
+        //@"《.*?》",
+        //@"\〈.*?\〉",
+        //@"\「.*?\」",
+        //@"\『.*?\』",
+        //@"\【.*?\】",
+        //@"\〖.*?\〗",
+        //@"\“.*?”"
     ];
     public static string[] FilesNotHandled = [
     ];
