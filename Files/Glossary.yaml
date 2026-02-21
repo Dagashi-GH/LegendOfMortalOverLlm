@@ -146,6 +146,8 @@
   rawSimplified: 武侠
   rawTraditional: 武俠
   result: Wuxia
+  allowalt: 
+  - martial hero
 - raw: 天书
   rawSimplified: 天书
   rawTraditional: 天書
@@ -216,6 +218,7 @@
   - Mechanical
   direct: Organization
   literal: Jiguan
+  badtrans: false
 - raw: 冷却中
   rawSimplified: 冷却中
   rawTraditional: 冷卻中
@@ -681,12 +684,12 @@
   result: Cultivation
   allowalt:
   - Cultivate
-- raw: 元气
-  rawSimplified: 元气
-  rawTraditional: 元氣
-  result: Vitality
-  direct: Primordial energy
-  literal: Yuanqi
+# - raw: 元气
+#   rawSimplified: 元气
+#   rawTraditional: 元氣
+#   result: Vitality
+#   direct: Primordial energy
+#   literal: Yuanqi
 - raw: 氣血
   rawSimplified: 气血
   rawTraditional: 氣血
@@ -785,6 +788,7 @@
   rawSimplified: 轻功
   rawTraditional: 輕功
   result: Qinggong
+  badtrans: false
 - raw: 内功
   rawSimplified: 内功
   rawTraditional: 內功
@@ -862,8 +866,11 @@
   rawSimplified: 承让了
   rawTraditional: 承讓了
   result: Thank you for letting me win
+  allowalt:
+    - Thank you for showing mercy
   direct: accept yielding
   literal: cheng rang le
+  badtrans: false
 - raw: 柔茹刚吐
   rawSimplified: 柔茹刚吐
   rawTraditional: 柔茹剛吐
