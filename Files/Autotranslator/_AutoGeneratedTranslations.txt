@@ -1,4 +1,4 @@
-﻿讀取中...=Reading...
+﻿讀取中...=Loading...
 刪除=Delete
 玩家社群=player community
 決鬥：大師兄=Duel: Big Brother
@@ -386,3 +386,56 @@ Realm‧三=Realm‧3
 第一個刺客是......=The first assassin is...
 蒙面人送你的秘笈......=Secrets given to you by the masked man...你的冰糖葫蘆生意......=Your candied haws business...
 考官是......=The examiner is...
+被採納的意見是......=The opinion adopted is...
+[Process]Number of rounds: 1 Both sides recover energy every round Player status effect -------- Enemy status effect --------\n骰子總數: 2+1+4+5+1 \= 13\n骰子總數:  \= 0\n玩家動作: 捅人, 敵人動作: 捅人\n--------\n基礎傷害: 246\n=[Process]Number of rounds: 1 Both sides recover energy every round Player status effect -------- Enemy status effect --------Total number of dice: 2+1+4+5+1 \= 13 Total number of dice: \= 0 Player action: stab, enemy action: stab --------Basic damage: 246\n
+似乎在討論什麼......=It seems like they are discussing something...
+[Process]Number of rounds: 1 Both sides recover energy every round Player status effect -------- Enemy status effect --------\n骰子總數: 5 \= 5\n骰子總數:  \= 0\n玩家動作: 嘴砲, 敵人動作: 備揍\n--------\n嘴攻基礎傷害: 12\n=[Process]Number of rounds: 1 Both sides recover energy every round Player status effect -------- Enemy status effect --------Total number of dice: 5 \= 5 Total number of dice: \= 0 Player action: Mouth attack, Enemy action: Prepare to beat -------- Mouth attack basic damage: 12\n
+勝=Win
+敗=Defeat
+閃避=Dodge
+時間=Time
+近戰=Melee
+我=Me
+敵=Enemy
+平射(長按拋射)=Horizontal shot (long press to shoot)
+預設=Default
+左=Left
+技能4=Skill 4
+勝利條件 [<color\=#C8681B>殲滅敵人</color>]=Victory condition [<color\=#C8681B>Annihilate the enemy</color>]
+技能1=Skill 1
+嘴功=Word skills
+勝利條件 [殲滅敵人]=Victory Condition [Destroy the enemy]
+鍵盤設定=Keyboard settings
+技能3=Skill 3
+右=Right
+回主選單=Return to main menu
+技能設置=Skill settings
+—暫停—=-Pause-
+–點擊繼續–=– Click to continue –
+勝利條件2 [限時生存]=Victory condition 2 [Limited time survival]
+這是你的屍體，沒有人愛你。=This is your body and no one loves you.
+技能2=Skill 2
+重新開始=Restart
+下=Down
+上=Superior
+出征=Go on an expedition
+沒朋友=No friends
+你死了。=You are dead.
+一敗塗地=A complete failure
+決戰=Decisive battle
+飛石幫=Flying Stone Gang
+綱=outline
+總=total
+器=device
+暗=dark
+門=Sect
+唐=Tang
+–戰術支援–=–Tactical Support–
+師弟你準備好了嗎?=Junior brother, are you ready?
+勝利條件 [<color\=#C8681B>時間結束</color>]=Victory condition [<color\=#C8681B>time ends</color>]
+乞丐與和尚的決鬥......=The duel between the beggar and the monk...
+你的反應......=Your reaction...
+茶肆=Tea shop
+你的想法......=What do you think…
+溫泉=Hot Spring
+義田=Righteous Field

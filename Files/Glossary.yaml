@@ -2452,3 +2452,77 @@
   badtrans: true
   direct: Lu member outside
   literal: lu yuan wai
+- raw: 白鯊幫
+  rawSimplified: 白鲨帮
+  rawTraditional: 白鯊幫
+  result: White Shark Gang
+  badtrans: true
+  direct: white shark gang
+  literal: bai sha bang
+- raw: 天王崩架
+  rawSimplified: 天王崩架
+  rawTraditional: 天王崩架
+  result: Heavenly King Collapse Form
+  badtrans: true
+  direct: heavenly king collapse frame
+  literal: tian wang beng jia
+- raw: 天王座
+  rawSimplified: 天王座
+  rawTraditional: 天王座
+  result: Heavenly King
+  badtrans: true
+  direct: heavenly king seat
+  literal: tian wang zuo
+- raw: 風雷神腿
+  rawSimplified: 风雷神腿
+  rawTraditional: 風雷神腿
+  result: Wind Thunder Divine Leg
+  badtrans: true
+  direct: wind thunder god leg
+  literal: feng lei shen tui
+- raw: 風雷神腳
+  rawSimplified: 风雷神脚
+  rawTraditional: 風雷神腳
+  result: Wind Thunder Divine Foot
+  badtrans: true
+  direct: wind thunder god foot
+  literal: feng lei shen jiao
+
+
+# Cultivation
+# Common stages
+- raw: 炼气
+  rawSimplified: 炼气
+  rawTraditional: 煉氣
+  result: Qi Refining
+  badtrans: true
+  direct: refine qi
+  literal: lian qi
+- raw: 筑基
+  rawSimplified: 筑基
+  rawTraditional: 築基
+  result: Foundation Establishment
+  badtrans: true
+  direct: build foundation
+  literal: zhu ji
+- raw: 结丹
+  rawSimplified: 结丹
+  rawTraditional: 結丹
+  result: Core Formation
+  badtrans: true
+  direct: form core
+  literal: jie dan
+- raw: 元婴
+  rawSimplified: 元婴
+  rawTraditional: 元嬰
+  result: Nascent Soul
+  badtrans: true
+  direct: primordial infant
+  literal: yuan ying
+- raw: 化神
+  rawSimplified: 化神
+  rawTraditional: 化神
+  result: Soul Formation
+  badtrans: true
+  direct: transform spirit
+  literal: hua shen

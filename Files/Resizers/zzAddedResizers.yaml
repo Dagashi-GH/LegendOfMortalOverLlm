@@ -603,7 +603,12 @@
   allowWordWrap: true
   adjustWidth: 1000
   adjustY: -50
-
+- path: '[UI]/TopPanel/CG_Panel/VerticalDesc/CgText(Clone)'
+  sampleText: Yunshang and you hold hands to wander through Jiangnan, taking a boat to listen to the rain and sleep. With you by their side, cherished and adored, they are fearless, their past filled with misdeeds, never settling down until old age, living this life without regrets. In this era of strict moral teachings, without the orders of parents and not relying on the words of matchmakers, they stay together purely by fate.
+  idealFontSize: 20
+  adjustY: -50
+  allowWordWrap: true
+  adjustWidth: 1000
 
 - path: '[UI]/TopPanel/StatusPanel/Container/Panels/Home/Title/Text'
   sampleText: Clouds part to reveal a clear day
@@ -611,3 +616,12 @@
   adjustHeight: 20
   adjustWidth: 40
   allowWordWrap: true
+  
+# Map  
+- path: '[UI]/MainUI/Layer_5/Map/Background/[Name]/*'
+  sampleText: Tang Sect
+  idealFontSize: 12.0
+  allowWordWrap: true
+  adjustWidth: 75
+  adjustX: -50
+  adjustY: -50
