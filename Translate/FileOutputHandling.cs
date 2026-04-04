@@ -96,7 +96,7 @@ public class FileOutputHandling
         Console.WriteLine($"Failed: {failedCount}");
     }
 
-    public static void CopyDirectory(string sourceDir, string destDir)
+    public static void CopyDirectory(string sourceDir, string destDir, bool overwrite = false)
     {
         // Get the subdirectories for the specified directory.
         var dir = new DirectoryInfo(sourceDir);
@@ -113,7 +113,7 @@ public class FileOutputHandling
         foreach (FileInfo file in files)
         {
             var tempPath = Path.Combine(destDir, file.Name);
-            file.CopyTo(tempPath, false);
+            file.CopyTo(tempPath, overwrite);
         }
 
         // Copy each subdirectory using recursion

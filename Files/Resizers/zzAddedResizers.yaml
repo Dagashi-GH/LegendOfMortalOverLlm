@@ -602,11 +602,11 @@
   idealFontSize: 20.0
   allowWordWrap: true
   adjustWidth: 1000
-  adjustY: -50
+  adjustY: -100
 - path: '[UI]/TopPanel/CG_Panel/VerticalDesc/CgText(Clone)'
   sampleText: Yunshang and you hold hands to wander through Jiangnan, taking a boat to listen to the rain and sleep. With you by their side, cherished and adored, they are fearless, their past filled with misdeeds, never settling down until old age, living this life without regrets. In this era of strict moral teachings, without the orders of parents and not relying on the words of matchmakers, they stay together purely by fate.
   idealFontSize: 20
-  adjustY: -50
+  adjustY: -100
   allowWordWrap: true
   adjustWidth: 1000
 
